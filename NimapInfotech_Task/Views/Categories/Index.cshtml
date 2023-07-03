@@ -1,0 +1,52 @@
+﻿@model IEnumerable<NimapInfotech_Task.Models.Category>
+@*@model PagedList.IPagedList<NimapInfotech_Task.Models.Category>
+@using PagedList.Mvc;
+@using PagedList;*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CategoryId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId })
+            </td>
+        </tr>
+    }
+
+</table>
+@*<h6>
+        @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+
+    </h6>*@
+
+<@*div>
+    Page @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+</div>*@

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<NimapInfotech_Task.Models.Product>
+@*@model PagedList.IPagedList<NimapInfotech_Task.Models.Product>
+@using PagedList.Mvc;
+@using PagedList;*@
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
+
+</table>
+@*<h6>
+        @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+        {Page,
+        }
+    </h6>*@
+
+@*<div>
+    Page @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, Page=>Url.Action("Index",new {Page}))
+</div>*@
+<div>
+    @if (ViewBag.HasPreviousPage)
+    {
+        @Html.ActionLink("Previous", "Index", new { page = ViewBag.PageNumber - 1 })
+    }
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        if (i == ViewBag.PageNumber)
+        {
+            <span>@i</span>
+        }
+        else
+        {
+            @Html.ActionLink(i.ToString(), "Index", new {page=i})
+        }
+    }
+    @if(ViewBag.HasNextPage)
+            {
+              @Html.ActionLink("Next", "Index", new { page = ViewBag.PageNumber + 1 })
+            }
+</div>
