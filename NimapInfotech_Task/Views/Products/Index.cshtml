@@ -1,8 +1,4 @@
 ﻿@model IEnumerable<NimapInfotech_Task.Models.Product>
-@*@model PagedList.IPagedList<NimapInfotech_Task.Models.Product>
-@using PagedList.Mvc;
-@using PagedList;*@
-
 
 
 @{
@@ -59,16 +55,7 @@
     }
 
 </table>
-@*<h6>
-        @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
-        {Page,
-        }
-    </h6>*@
 
-@*<div>
-    Page @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) of @Model.PageCount
-    @Html.PagedListPager(Model, Page=>Url.Action("Index",new {Page}))
-</div>*@
 <div>
     @if (ViewBag.HasPreviousPage)
     {

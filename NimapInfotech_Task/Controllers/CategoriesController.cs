@@ -18,9 +18,7 @@ namespace NimapInfotech_Task.Controllers
         // GET: Categories
         public ActionResult Index(int ? page)
         {
-            //int pageSize = 10;
-            //int pageNumber = page ?? 1;
-            //var Categories = db.Categories.ToList().OrderBy(c => c.CategoryId).ToPagedList(pageNumber, pageSize);
+            
 
             return View(db.Categories.ToList());
         }
